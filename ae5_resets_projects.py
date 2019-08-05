@@ -24,7 +24,7 @@ def db_sessions():
 
 #find db sessions with no matching deployment and delete it
 def delete_session(new_list, db_sessions_list):
-    delete="ae5 session delete"
+    stop="ae5 session stop"
     for session in db_sessions_list:
         if session not in new_list:
             os.system(stop + ' ' + session + ' ' + '--yes')
