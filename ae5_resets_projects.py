@@ -10,17 +10,17 @@ def active_deployments():
         s_id=('a1-'+each.strip('anaconda-session-'))
         new_list.append(s_id)
 
-    #new_list = filter(None, new_list)
-    return new_list
+    new_list = filter(None, new_list)
+    return list(new_list)
 
 #get DB sessions
 def db_sessions():
     db_sessions="ae5 session list --columns=id --no-header"
     session=os.popen(db_sessions).read()
     db_sessions_list = session.split("\n")
-    #db_sessions_list = filter(None, db_sessions_list)
+    db_sessions_list = filter(None, db_sessions_list)
 
-    return db_sessions_list
+    return list(db_sessions_list)
 
 #find db sessions with no matching deployment and delete it
 def delete_session(new_list, db_sessions_list):
